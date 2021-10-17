@@ -117,6 +117,12 @@ class InstallCommand extends Command
 
     protected function replacePlaceholders(string $contents): string
     {
+        $contents = str_replace(
+            'StubProjectName',
+            \Illuminate\Support\Str::Studly($this->input->getArgument('project-name')),
+            $contents
+        );
+
         return str_replace(
             'stub-project-name',
             $this->input->getArgument('project-name'),
